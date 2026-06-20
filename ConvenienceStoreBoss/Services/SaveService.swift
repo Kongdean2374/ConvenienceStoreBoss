@@ -63,7 +63,7 @@ enum SaveService {
     static func save(_ data: StoreData) -> Bool {
         var safe = data
         // 存檔前先修正異常資料，避免壞資料被永久保存。
-        GameViewModel.clampInPlace(&safe)
+        StoreDataValidator.clamp(&safe)
         do {
             let raw = try encoder.encode(safe)
             UserDefaults.standard.set(raw, forKey: saveKey)
@@ -99,7 +99,7 @@ enum SaveService {
     /// 匯出存檔為 JSON 字串。
     static func exportString(_ data: StoreData) throws -> String {
         var safe = data
-        GameViewModel.clampStoreData(&safe)
+        StoreDataValidator.clamp(&safe)
         let raw = try encoder.encode(safe)
         guard let text = String(data: raw, encoding: .utf8) else {
             throw SaveError.encodeFailed("JSON encoding failed")
@@ -122,7 +122,7 @@ enum SaveService {
         do {
             var decoded = try decoder.decode(StoreData.self, from: raw)
             // 匯入後立刻修正，避免外部壞資料。
-            GameViewModel.clampStoreData(&decoded)
+            StoreDataValidator.clamp(&decoded)
             return decoded
         } catch {
             throw SaveError.decodeFailed(error.localizedDescription)

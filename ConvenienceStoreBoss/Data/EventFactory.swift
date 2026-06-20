@@ -54,11 +54,11 @@ enum EventFactory {
                 description: "某位員工覺得薪水太低，最近工作態度明顯變差。",
                 choices: [
                     EventChoice(title: "加薪安撫", successChance: 95,
-                                successEffect: EventEffect(employeeMoodChange: 15, employeeLoyaltyChange: 12, moneyChange: -200, message: "員工滿意了。"),
-                                failEffect: EventEffect(employeeMoodChange: 5, moneyChange: -200, message: "員工沒那麼開心。")),
+                                successEffect: EventEffect(moneyChange: -200, employeeMoodChange: 15, employeeLoyaltyChange: 12, message: "員工滿意了。"),
+                                failEffect: EventEffect(moneyChange: -200, employeeMoodChange: 5, message: "員工沒那麼開心。")),
                     EventChoice(title: "發一次獎金", successChance: 75,
-                                successEffect: EventEffect(employeeMoodChange: 10, employeeLoyaltyChange: 5, moneyChange: -300, message: "員工心情好轉。"),
-                                failEffect: EventEffect(employeeMoodChange: 2, moneyChange: -300, message: "員工不太領情。")),
+                                successEffect: EventEffect(moneyChange: -300, employeeMoodChange: 10, employeeLoyaltyChange: 5, message: "員工心情好轉。"),
+                                failEffect: EventEffect(moneyChange: -300, employeeMoodChange: 2, message: "員工不太領情。")),
                     EventChoice(title: "警告他", successChance: 35,
                                 successEffect: EventEffect(employeeMoodChange: -5, message: "員工暫時安靜。"),
                                 failEffect: EventEffect(employeeMoodChange: -15, employeeLoyaltyChange: -15, message: "員工更不滿了。")),
@@ -81,7 +81,7 @@ enum EventFactory {
                                 successEffect: EventEffect(moneyChange: 50, employeeMoodChange: -8, employeeLoyaltyChange: -5, message: "員工被扣薪。"),
                                 failEffect: EventEffect(employeeMoodChange: -15, employeeLoyaltyChange: -10, message: "員工很不高興。")),
                     EventChoice(title: "放他一馬", successChance: 60,
-                                successEffect: EventEffect(employeeMoodChange: 5, employeeLoyaltyChange: 3, satisfactionChange: -3, message: "員工感謝體諒。"),
+                                successEffect: EventEffect(satisfactionChange: -3, employeeMoodChange: 5, employeeLoyaltyChange: 3, message: "員工感謝體諒。"),
                                 failEffect: EventEffect(satisfactionChange: -8, message: "客人等得更久。"))
                 ],
                 eventType: .employeeLate
@@ -93,14 +93,14 @@ enum EventFactory {
                 description: "冷藏櫃溫度異常，冷藏商品可能報廢。",
                 choices: [
                     EventChoice(title: "立即維修", successChance: 90,
-                                successEffect: EventEffect(moneyChange: -500, productLoss: 2, reputationChange: 2, message: "維修完成。"),
+                                successEffect: EventEffect(moneyChange: -500, reputationChange: 2, productLoss: 2, message: "維修完成。"),
                                 failEffect: EventEffect(moneyChange: -500, productLoss: 5, message: "維修花了點時間。")),
                     EventChoice(title: "暫時撐著", successChance: 45,
                                 successEffect: EventEffect(productLoss: 3, message: "暫時撐過去了。"),
-                                failEffect: EventEffect(productLoss: 12, reputationChange: -8, message: "部分商品報廢。")),
+                                failEffect: EventEffect(reputationChange: -8, productLoss: 12, message: "部分商品報廢。")),
                     EventChoice(title: "關閉冷藏櫃", successChance: 30,
                                 successEffect: EventEffect(productLoss: 6, message: "已關閉冷藏櫃。"),
-                                failEffect: EventEffect(productLoss: 18, satisfactionChange: -10, message: "大量商品損失。"))
+                                failEffect: EventEffect(satisfactionChange: -10, productLoss: 18, message: "大量商品損失。"))
                 ],
                 eventType: .fridgeBroken
             ),
@@ -115,10 +115,10 @@ enum EventFactory {
                                 failEffect: EventEffect(moneyChange: -300, satisfactionChange: -2, message: "補貨稍慢。")),
                     EventChoice(title: "推薦其他商品", successChance: 65,
                                 successEffect: EventEffect(satisfactionChange: 2, message: "客人接受了替代品。"),
-                                failEffect: EventEffect(satisfactionChange: -8, reputationChange: -3, message: "客人不太滿意。")),
+                                failEffect: EventEffect(reputationChange: -3, satisfactionChange: -8, message: "客人不太滿意。")),
                     EventChoice(title: "不處理", successChance: 20,
                                 successEffect: EventEffect(satisfactionChange: -5, message: "客人有些失望。"),
-                                failEffect: EventEffect(satisfactionChange: -15, reputationChange: -8, message: "客人抱怨連連。"))
+                                failEffect: EventEffect(reputationChange: -8, satisfactionChange: -15, message: "客人抱怨連連。"))
                 ],
                 eventType: .hotItemShortage
             ),
@@ -129,7 +129,7 @@ enum EventFactory {
                 description: "稽查員突然來店檢查清潔與商品狀態。",
                 choices: [
                     EventChoice(title: "立刻整理", successChance: 75,
-                                successEffect: EventEffect(reputationChange: 5, moneyChange: -100, message: "整理得乾乾淨淨。"),
+                                successEffect: EventEffect(moneyChange: -100, reputationChange: 5, message: "整理得乾乾淨淨。"),
                                 failEffect: EventEffect(moneyChange: -300, reputationChange: -3, message: "被記了幾點小缺失。")),
                     EventChoice(title: "正常應對", successChance: 55,
                                 successEffect: EventEffect(message: "稽查順利通過。"),
@@ -172,7 +172,7 @@ enum EventFactory {
                                 failEffect: EventEffect(moneyChange: 50, satisfactionChange: -5, message: "補貨慢了一拍。")),
                     EventChoice(title: "讓員工撐住", successChance: 35,
                                 successEffect: EventEffect(moneyChange: 100, employeeMoodChange: -8, message: "硬撐過去了。"),
-                                failEffect: EventEffect(employeeMoodChange: -15, satisfactionChange: -10, message: "現場一片混亂。"))
+                                failEffect: EventEffect(satisfactionChange: -10, employeeMoodChange: -15, message: "現場一片混亂。"))
                 ],
                 eventType: .midnightRush
             ),
@@ -201,11 +201,11 @@ enum EventFactory {
                 description: "某位員工提出離職。",
                 choices: [
                     EventChoice(title: "加薪挽留", successChance: 80,
-                                successEffect: EventEffect(employeeMoodChange: 15, employeeLoyaltyChange: 15, moneyChange: -300, message: "員工決定留下。"),
-                                failEffect: EventEffect(employeeMoodChange: 5, moneyChange: -300, message: "員工仍在考慮。")),
+                                successEffect: EventEffect(moneyChange: -300, employeeMoodChange: 15, employeeLoyaltyChange: 15, message: "員工決定留下。"),
+                                failEffect: EventEffect(moneyChange: -300, employeeMoodChange: 5, message: "員工仍在考慮。")),
                     EventChoice(title: "發獎金慰留", successChance: 65,
-                                successEffect: EventEffect(employeeMoodChange: 12, employeeLoyaltyChange: 8, moneyChange: -400, message: "員工被打動。"),
-                                failEffect: EventEffect(employeeMoodChange: 3, moneyChange: -400, message: "員工心意已決。")),
+                                successEffect: EventEffect(moneyChange: -400, employeeMoodChange: 12, employeeLoyaltyChange: 8, message: "員工被打動。"),
+                                failEffect: EventEffect(moneyChange: -400, employeeMoodChange: 3, message: "員工心意已決。")),
                     EventChoice(title: "接受離職", successChance: 100,
                                 successEffect: EventEffect(message: "員工離開了。"),
                                 failEffect: EventEffect(message: "員工離開了。")),

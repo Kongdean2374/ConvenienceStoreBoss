@@ -14,6 +14,10 @@ struct ProgressStatView: View {
     var color: Color = .blue
     var showNumber: Bool = true
 
+    private var progressRatio: CGFloat {
+        CGFloat(Double(min(100, max(0, value))) / 100.0)
+    }
+
     /// 依數值自動給予顏色（高=綠、中=橘、低=紅）。可覆寫。
     private var displayColor: Color {
         if color != .blue { return color }
@@ -49,7 +53,7 @@ struct ProgressStatView: View {
                         .frame(height: 8)
                     Capsule()
                         .fill(displayColor)
-                        .frame(width: geo.size.width * CGFloat(max(0, min(100, value)) / 100.0), height: 8)
+                        .frame(width: geo.size.width * progressRatio, height: 8)
                 }
             }
             .frame(height: 8)

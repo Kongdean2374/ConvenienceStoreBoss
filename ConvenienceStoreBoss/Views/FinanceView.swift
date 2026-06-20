@@ -57,11 +57,13 @@ struct FinanceView: View {
 
     private var historyCard: some View {
         SectionCard(title: "歷史紀錄", icon: "chart.bar.xaxis") {
-            HStack(spacing: 8) {
-                statBox("歷史最高日營業額", "$\(vm.store.highestDailyRevenue)", .green)
-                statBox("總賺取金額", "$\(vm.store.totalEarned)", .indigo)
+            VStack(spacing: 8) {
+                HStack(spacing: 8) {
+                    statBox("歷史最高日營業額", "$\(vm.store.highestDailyRevenue)", .green)
+                    statBox("總賺取金額", "$\(vm.store.totalEarned)", .indigo)
+                }
+                statBox("店鋪估值", "$\(vm.store.storeValue)", .purple)
             }
-            statBox("店鋪估值", "$\(vm.store.storeValue)", .purple)
         }
     }
 

@@ -55,16 +55,16 @@ enum ProductFactory {
         list.append(p("雞肉飯糰", .food, 20, 68, 2, .chilled, cold: true))
         list.append(p("茶葉蛋", .food, 8, 75, 1, .hotFood, hot: true))
         list.append(p("熱狗", .food, 12, 60, 1, .hotFood, hot: true))
-        list.append(p("便當", .food, 45, 80, 1, .chilled, cold: true, capacity: 15))
+        list.append(p("便當", .food, 45, 80, 1, .chilled, capacity: 15, cold: true))
         list.append(p("雞胸肉", .food, 40, 55, 3, .chilled, cold: true))
         list.append(p("三明治", .food, 25, 65, 2, .chilled, cold: true))
         list.append(p("麵包", .food, 20, 60, 3, .normal))
         list.append(p("沙拉", .food, 35, 50, 2, .chilled, cold: true))
         list.append(p("涼麵", .food, 30, 65, 1, .chilled, cold: true))
-        list.append(p("壽司盒", .food, 50, 70, 1, .chilled, cold: true, capacity: 12))
+        list.append(p("壽司盒", .food, 50, 70, 1, .chilled, capacity: 12, cold: true))
         list.append(p("漢堡", .food, 30, 70, 1, .hotFood, hot: true))
         list.append(p("蛋餅", .food, 22, 65, 1, .hotFood, hot: true))
-        list.append(p("飯糰組合餐", .food, 55, 60, 1, .chilled, cold: true, unlockedLevel: 2, capacity: 10))
+        list.append(p("飯糰組合餐", .food, 55, 60, 1, .chilled, unlockedLevel: 2, capacity: 10, cold: true))
 
         // ===== 飲料類 =====
         list.append(p("礦泉水", .drink, 8, 80, 365, .normal, capacity: 30))
@@ -82,7 +82,7 @@ enum ProductFactory {
         list.append(p("鮮奶", .drink, 25, 60, 7, .chilled, cold: true))
         list.append(p("優酪乳", .drink, 22, 50, 10, .chilled, cold: true))
         list.append(p("檸檬茶", .drink, 15, 62, 180, .normal))
-        list.append(p("冰美式", .drink, 30, 70, 1, .chilled, cold: true, unlockedLevel: 2))
+        list.append(p("冰美式", .drink, 30, 70, 1, .chilled, unlockedLevel: 2, cold: true))
 
         // ===== 零食類 =====
         list.append(p("洋芋片", .snack, 18, 70, 180, .normal))
@@ -125,7 +125,7 @@ enum ProductFactory {
         list.append(p("烤地瓜", .hotFood, 25, 60, 3, .hotFood, hot: true))
         list.append(p("炸雞", .hotFood, 45, 75, 1, .hotFood, hot: true))
         list.append(p("薯條", .hotFood, 25, 70, 1, .hotFood, hot: true))
-        list.append(p("咖哩飯", .hotFood, 55, 65, 1, .hotFood, hot: true, unlockedLevel: 2))
+        list.append(p("咖哩飯", .hotFood, 55, 65, 1, .hotFood, unlockedLevel: 2, hot: true))
         list.append(p("熱湯", .hotFood, 30, 55, 1, .hotFood, hot: true))
         list.append(p("包子", .hotFood, 15, 65, 1, .hotFood, hot: true))
         list.append(p("蒸蛋", .hotFood, 18, 50, 1, .hotFood, hot: true))
@@ -135,7 +135,7 @@ enum ProductFactory {
         list.append(p("冷凍水餃", .frozen, 50, 65, 180, .frozen, frozen: true))
         list.append(p("冷凍炒飯", .frozen, 45, 60, 180, .frozen, frozen: true))
         list.append(p("冰棒", .frozen, 15, 70, 180, .frozen, frozen: true))
-        list.append(p("冷凍披薩", .frozen, 90, 55, 180, .frozen, frozen: true, unlockedLevel: 2))
+        list.append(p("冷凍披薩", .frozen, 90, 55, 180, .frozen, unlockedLevel: 2, frozen: true))
         list.append(p("冷凍雞塊", .frozen, 60, 60, 180, .frozen, frozen: true))
 
         // ===== 服務商品（不會過期，櫃檯區）=====

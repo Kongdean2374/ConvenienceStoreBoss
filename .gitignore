@@ -1,0 +1,4 @@
+
+# Ignore Windows reserved device-name junk files
+nul
+**/nul

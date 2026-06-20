@@ -38,7 +38,7 @@ enum EmployeeFactory {
             // 7. 阿凱 - 補貨員，效率高但疲勞容易上升
             Employee(name: "阿凱", role: .restocker, hourlyWage: 170, expectedWage: 180,
                      cashierSkill: 35, restockSkill: 85, cleaningSkill: 50, serviceSkill: 45,
-                     mood: 70, loyalty: 60, efficiency: 80, fatigue: 20, quitRisk: 22, lazyRisk: 15),
+                     mood: 70, fatigue: 20, loyalty: 60, efficiency: 80, quitRisk: 22, lazyRisk: 15),
             // 8. 美玲 - 清潔員，清潔高但收銀低
             Employee(name: "美玲", role: .cleaner, hourlyWage: 155, expectedWage: 165,
                      cashierSkill: 20, restockSkill: 50, cleaningSkill: 92, serviceSkill: 50,

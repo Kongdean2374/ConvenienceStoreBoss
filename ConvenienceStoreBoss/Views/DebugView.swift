@@ -165,18 +165,20 @@ struct DebugView: View {
     // MARK: - 日誌
 
     private var logSection: some View {
-        Section("Debug Log") {
-            if vm.store.debugLog.isEmpty {
-                Text("尚無 Debug 紀錄").font(.caption).foregroundColor(.secondary)
-            } else {
-                ForEach(vm.store.debugLog.suffix(20).reversed(), id: \.self) { log in
-                    Text(log).font(.caption2).foregroundColor(.secondary)
+        Group {
+            Section("Debug Log") {
+                if vm.store.debugLog.isEmpty {
+                    Text("尚無 Debug 紀錄").font(.caption).foregroundColor(.secondary)
+                } else {
+                    ForEach(vm.store.debugLog.suffix(20).reversed(), id: \.self) { log in
+                        Text(log).font(.caption2).foregroundColor(.secondary)
+                    }
                 }
             }
-        }
-        Section("最近 20 筆事件 Log") {
-            ForEach(vm.store.eventLog.suffix(20).reversed(), id: \.self) { log in
-                Text(log).font(.caption2).foregroundColor(.secondary)
+            Section("最近 20 筆事件 Log") {
+                ForEach(vm.store.eventLog.suffix(20).reversed(), id: \.self) { log in
+                    Text(log).font(.caption2).foregroundColor(.secondary)
+                }
             }
         }
     }
