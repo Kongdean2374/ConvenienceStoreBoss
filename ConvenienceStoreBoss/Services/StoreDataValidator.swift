@@ -8,15 +8,19 @@
 import Foundation
 
 enum StoreDataValidator {
+    private static func clampInt(_ value: Int, _ lower: Int, _ upper: Int) -> Int {
+        min(max(value, lower), upper)
+    }
+
     static func clampProduct(_ product: Product) -> Product {
         var p = product
         p.buyPrice = max(0, p.buyPrice)
         p.sellPrice = max(1, p.sellPrice)
-        p.baseDemand = clamp(p.baseDemand, 0, 100)
+        p.baseDemand = clampInt(p.baseDemand, 0, 100)
         p.warehouseStock = max(0, p.warehouseStock)
         p.shelfCapacity = max(0, p.shelfCapacity)
         p.shelfStock = min(max(0, p.shelfStock), p.shelfCapacity)
-        p.freshness = clamp(p.freshness, 0, 100)
+        p.freshness = clampInt(p.freshness, 0, 100)
         p.soldToday = max(0, p.soldToday)
         p.autoRestockThreshold = max(0, p.autoRestockThreshold)
         p.autoRestockAmount = max(0, p.autoRestockAmount)
@@ -27,24 +31,24 @@ enum StoreDataValidator {
         var e = employee
         e.hourlyWage = max(0, e.hourlyWage)
         e.expectedWage = max(0, e.expectedWage)
-        e.cashierSkill = clamp(e.cashierSkill, 0, 100)
-        e.restockSkill = clamp(e.restockSkill, 0, 100)
-        e.cleaningSkill = clamp(e.cleaningSkill, 0, 100)
-        e.serviceSkill = clamp(e.serviceSkill, 0, 100)
-        e.mood = clamp(e.mood, 0, 100)
-        e.fatigue = clamp(e.fatigue, 0, 100)
-        e.loyalty = clamp(e.loyalty, 0, 100)
-        e.efficiency = clamp(e.efficiency, 0, 100)
-        e.quitRisk = clamp(e.quitRisk, 0, 100)
-        e.lazyRisk = clamp(e.lazyRisk, 0, 100)
+        e.cashierSkill = clampInt(e.cashierSkill, 0, 100)
+        e.restockSkill = clampInt(e.restockSkill, 0, 100)
+        e.cleaningSkill = clampInt(e.cleaningSkill, 0, 100)
+        e.serviceSkill = clampInt(e.serviceSkill, 0, 100)
+        e.mood = clampInt(e.mood, 0, 100)
+        e.fatigue = clampInt(e.fatigue, 0, 100)
+        e.loyalty = clampInt(e.loyalty, 0, 100)
+        e.efficiency = clampInt(e.efficiency, 0, 100)
+        e.quitRisk = clampInt(e.quitRisk, 0, 100)
+        e.lazyRisk = clampInt(e.lazyRisk, 0, 100)
         return e
     }
 
     static func clamp(_ store: inout StoreData) {
         store.money = max(0, store.money)
-        store.reputation = clamp(store.reputation, 0, 100)
-        store.satisfaction = clamp(store.satisfaction, 0, 100)
-        store.cleanliness = clamp(store.cleanliness, 0, 100)
+        store.reputation = clampInt(store.reputation, 0, 100)
+        store.satisfaction = clampInt(store.satisfaction, 0, 100)
+        store.cleanliness = clampInt(store.cleanliness, 0, 100)
         store.currentCustomers = max(0, store.currentCustomers)
         store.checkoutQueue = max(0, store.checkoutQueue)
 
